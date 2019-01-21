@@ -2,14 +2,17 @@ package Selenium;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class SeleniumWebDriver {
 
 	public static WebDriver driver;
 
 	public static void setUp() {
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--disable-notifications");
 		System.setProperty("webdriver.chrome.driver", "C:\\BrowserAutomation\\Chrome\\chromedriver.exe");
-		driver = new ChromeDriver();
+		driver = new ChromeDriver(options);
 		driver.manage().window().maximize();
 	}
 
