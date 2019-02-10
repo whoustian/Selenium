@@ -28,7 +28,7 @@ public class SeleniumWebDriver {
 		return driver.getCurrentUrl();
 	}
 
-	public static void closeBroswer() {
+	public static void closeBrowser() {
 		driver.quit();
 	}
 

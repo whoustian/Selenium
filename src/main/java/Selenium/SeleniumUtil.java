@@ -2,6 +2,8 @@ package Selenium;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SeleniumUtil {
 
@@ -23,6 +25,11 @@ public class SeleniumUtil {
 	public static String getText(By object) {
 		WebElement element = SeleniumWebDriver.driver.findElement(object);
 		return element.getText();
+	}
+
+	public static void waitForElementVisible(By object, int secondsToWait) {
+		WebDriverWait wait = new WebDriverWait(SeleniumWebDriver.driver, secondsToWait);
+		wait.until(ExpectedConditions.presenceOfElementLocated(object));
 	}
 
 }
