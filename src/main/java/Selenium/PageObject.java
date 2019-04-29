@@ -52,8 +52,17 @@ public class PageObject {
 	}
 
 	public void waitForVisible(int secondsToWait) {
-		WebDriverWait wait = new WebDriverWait(SeleniumWebDriver.driver, secondsToWait);
-		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		try {
+			WebDriverWait wait = new WebDriverWait(SeleniumWebDriver.driver, secondsToWait);
+			wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		} catch (Exception e) {
+			System.out.println("Waited " + secondsToWait + " seconds for visiblity of element: " + locator
+					+ ". Element was not visible.");
+		}
+	}
+
+	public void isVisible() {
+		SeleniumWebDriver.driver.findElement(locator).isDisplayed();
 	}
 
 }
